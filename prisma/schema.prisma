@@ -14,16 +14,30 @@ datasource db {
     url      = env("DATABASE_URL")
 }
 
-model Post {
-    id        Int      @id @default(autoincrement())
-    name      String
-    createdAt DateTime @default(now())
-    updatedAt DateTime @updatedAt
+enum DayOfWeek {
+    MONDAY
+    TUESDAY
+    WEDNESDAY
+    THURSDAY
+    FRIDAY
+    SATURDAY
+    SUNDAY
+}
 
-    createdBy   User   @relation(fields: [createdById], references: [id])
-    createdById String
-
-    @@index([name])
+model WeightLossCommitment {
+    id                   Int        @id @default(autoincrement())
+    currentWeight        Float
+    currentHeight        Float
+    targetWeight         Float
+    daysToAchieve        Int
+    startDay             DateTime
+    reportingDays        DayOfWeek[]
+    
+    userId               String
+    user                 User       @relation(fields: [userId], references: [id])
+    
+    successfulPeriods    Int
+    unsuccessfulPeriods  Int
 }
 
 // Necessary for Next auth
@@ -62,7 +76,7 @@ model User {
     image         String?
     accounts      Account[]
     sessions      Session[]
-    posts         Post[]
+    weightLossCommitments WeightLossCommitment[]
 }
 
 model VerificationToken {
