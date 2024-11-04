@@ -1,6 +1,6 @@
 import { test, expect } from '@playwright/test';
 
-test.skip('user can go to the top page', async ({ page }) => {
+test('user can go to the top page', async ({ page }) => {
   await page.goto('/');
-  await expect(page.getByText('ダイエット成功のための計画を立てる')).toBeVisible();
+  await expect(page.getByText('ダイエット成功のための契約を結ぶ')).toBeVisible();
 });

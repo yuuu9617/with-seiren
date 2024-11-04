@@ -7,7 +7,6 @@
 
 # testing
 /coverage
-/tests-examples
 
 # database
 /prisma/db.sqlite
@@ -50,3 +49,6 @@ node_modules/
 /playwright-report/
 /blob-report/
 /playwright/.cache/
+
+# sample
+*_page.tsx
