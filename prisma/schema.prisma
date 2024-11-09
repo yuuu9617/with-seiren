@@ -25,7 +25,7 @@ enum DayOfWeek {
 }
 
 model WeightLossCommitment {
-    id                   Int        @id @default(autoincrement())
+    id                   String        @id @default(cuid())
     currentWeight        Float
     currentHeight        Float
     targetWeight         Float
